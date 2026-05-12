@@ -33,7 +33,7 @@ func New(cfg Config) (*Kafka, error) {
     }
 
     conn.Close()
-
+    log.Println("kafka start")
     return &Kafka {
       writer: writer,
       reader: reader,

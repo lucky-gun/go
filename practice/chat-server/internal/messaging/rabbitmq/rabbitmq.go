@@ -71,7 +71,7 @@ func New(cfg Config) (*RabbitMQ, error) {
         if err != nil {
                 return nil, err
         }
-
+        log.Println("rabbitmq start")
         return &RabbitMQ{
                 conn:    conn,
                 channel: ch,

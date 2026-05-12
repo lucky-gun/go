@@ -3,22 +3,32 @@ package main
 import (
 	"log"
         "os"
-        "chat-server/internal/messaging"
+        "github.com/joho/godotenv"
+        //"chat-server/internal/messaging"
 //	"net/http"
 )
 
 func main() {
+       
+        err := godotenv.Load()
+        if err != nil {
+          log.Println(".env load 실패")
+        }
 
         log.Println("server start")
 
-        mode := os.Getenv("MQ_TYPE")
+        /*mode := os.Getenv("MQ_TYPE")
+
         broker, err := messaging.NewMessageBroker(mode)        
 
         if err != nil {
            log.Fatal(err)
         }
+        defer broker.Close()*/
+        lobbyManager := lobby.NewLobbyManager()
 
-        log.Println("broker connected: %T\n", broker)
+
+
         /*
 	lobbyManager := lobby.NewLobbyManager()
 	roomService := lobby.NewRoomService(lobbyManager)
