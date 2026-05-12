@@ -1,0 +1,17 @@
+package main
+
+import (
+	"log"
+	"net/http"
+
+	"chat-server/internal/websocketlite"
+)
+
+func main() {
+
+	http.HandleFunc("/ws", websocketlite.HandleWebSocket)
+
+	log.Println("server started :8080")
+
+	http.ListenAndServe(":8080", nil)
+}

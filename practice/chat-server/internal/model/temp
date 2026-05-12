@@ -1,0 +1,12 @@
+broker, _ := kafka.NewKafka(cfg)
+
+broker.Consume(server.MessageHandler)
+
+msg := model.Message{
+    Username: "kim",
+    RoomID:   "room1",
+    Content:  "hello",
+    CreatedAt: time.Now(),
+}
+
+server.PublishMessage(broker, msg)
